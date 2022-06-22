@@ -4,6 +4,7 @@ import TestComponent from "./components/Test.component";
 import LoginPage from "./pages/login/Login.page";
 import ProductsPage from "./pages/products/Products.page";
 import RegisterPage from "./pages/register/Register.page";
+import UsersPage from "./pages/users/Users.page";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <TestComponent />
       {/* <LoginPage /> */}
       {/* <RegisterPage /> */}
-      <ProductsPage />
+      {/* <ProductsPage /> */}
+      <UsersPage />
     </div>
   );
 }
