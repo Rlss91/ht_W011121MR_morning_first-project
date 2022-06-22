@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
 import TestComponent from "./components/Test.component";
 import LoginPage from "./pages/login/Login.page";
+import ProductsPage from "./pages/products/Products.page";
 import RegisterPage from "./pages/register/Register.page";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
       <Navbar />
       <TestComponent />
       {/* <LoginPage /> */}
-      <RegisterPage />
+      {/* <RegisterPage /> */}
+      <ProductsPage />
     </div>
   );
 }
