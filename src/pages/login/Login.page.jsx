@@ -20,6 +20,7 @@ const LoginPage = () => {
         })
         .then(({ data }) => {
           console.log("data", data);
+          localStorage.setItem("token", data.token);
         })
         .catch((err) => {
           console.log(err);
