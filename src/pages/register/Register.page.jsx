@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import Joi from "joi-browser";
+import registerSchema from "../../validation/register.validation";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -33,20 +35,33 @@ const RegisterPage = () => {
     //   setShowPasswordErrorMsg(false);
     // }
     setShowPasswordErrorMsg(password != confirmPassword);
-    if (password === confirmPassword) {
-      axios
-        .post("http://localhost:3001/api/users", {
-          name: name,
-          email: email,
-          password: password,
-          biz: isBiz,
-        })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log("err from axios", err);
-        });
+    const validatedValue = Joi.validate(
+      { email, password, confirmPassword, biz: isBiz, name },
+      registerSchema,
+      {
+        abortEarly: false,
+      }
+    );
+    const { error } = validatedValue;
+
+    if (error) {
+      console.log("error", error.details);
+    } else {
+      if (password === confirmPassword) {
+        axios
+          .post("/users", {
+            name: name,
+            email: email,
+            password: password,
+            biz: isBiz,
+          })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log("err from axios", err);
+          });
+      }
     }
   };
 
