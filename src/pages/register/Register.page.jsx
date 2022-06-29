@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
+import { toast } from "react-toastify";
+
 import registerSchema from "../../validation/register.validation";
 
 const RegisterPage = () => {
@@ -45,7 +47,10 @@ const RegisterPage = () => {
     const { error } = validatedValue;
 
     if (error) {
-      console.log("error", error.details);
+      // console.log("error", error.details[0].message.replaceAll('"', ""));
+      for (let item of error.details) {
+        toast.error(item.message.replaceAll('"', ""));
+      }
     } else {
       if (password === confirmPassword) {
         axios
