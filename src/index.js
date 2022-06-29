@@ -2,11 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import axios from "axios";
 /* import bootstrap to react project */
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import "./index.css";
+
+//add this url before every axios request
+//if the url is relative - then axios will ignore this url
+axios.defaults.baseURL = "http://localhost:3001/api";
+
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    //if token saved in localStorage then
+    //I want to add the token to the header of the request
+    config.headers["x-auth-token"] = token;
+  }
+  return config;
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

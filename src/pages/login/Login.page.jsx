@@ -1,5 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import Joi from "joi-browser";
+
+import loginSchema from "../../validation/login.validation";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -12,9 +15,16 @@ const LoginPage = () => {
   };
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    if (email && password) {
+    const validatedValue = Joi.validate({ email, password }, loginSchema, {
+      abortEarly: false,
+    });
+    const { error } = validatedValue;
+    if (error) {
+      //invalid email
+      //invalid password
+    } else {
       axios
-        .post("http://localhost:3001/api/auth", {
+        .post("/auth", {
           email,
           password,
         })
