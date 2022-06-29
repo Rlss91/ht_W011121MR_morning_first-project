@@ -2,12 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+/* axios */
 import axios from "axios";
 /* import bootstrap to react project */
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
+/* toastify */
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
+/* axios config */
 //add this url before every axios request
 //if the url is relative - then axios will ignore this url
 axios.defaults.baseURL = "http://localhost:3001/api";
