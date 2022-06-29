@@ -18,6 +18,7 @@ const FirstAjaxPage = () => {
       <button className="btn btn-success" onClick={handleBtnClick}>
         send request
       </button>
+
       {itemArr.map((item) => (
         <FakeApiCardComponent
           key={item.id}

@@ -1,19 +1,21 @@
 import { useState } from "react";
+import axios from "axios";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
+  // const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isBiz, setIsBiz] = useState(false);
   const [showPasswordErrorMsg, setShowPasswordErrorMsg] = useState(false);
 
   const handleNameChange = (ev) => {
     setName(ev.target.value);
   };
-  const handleLastnameChange = (ev) => {
-    setLastname(ev.target.value);
-  };
+  // const handleLastnameChange = (ev) => {
+  //   setLastname(ev.target.value);
+  // };
   const handleEmailChange = (ev) => {
     setEmail(ev.target.value);
   };
@@ -31,6 +33,26 @@ const RegisterPage = () => {
     //   setShowPasswordErrorMsg(false);
     // }
     setShowPasswordErrorMsg(password != confirmPassword);
+    if (password === confirmPassword) {
+      axios
+        .post("http://localhost:3001/api/users", {
+          name: name,
+          email: email,
+          password: password,
+          biz: isBiz,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log("err from axios", err);
+        });
+    }
+  };
+
+  const handleCBChanged = (ev) => {
+    // console.log(ev.target.checked);
+    setIsBiz(ev.target.checked);
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -47,7 +69,7 @@ const RegisterPage = () => {
           onChange={handleNameChange}
         />
       </div>
-      <div className="mb-3">
+      {/* <div className="mb-3">
         <label htmlFor="exampleInputLastname1" className="form-label">
           Lastname
         </label>
@@ -59,7 +81,7 @@ const RegisterPage = () => {
           value={lastname}
           onChange={handleLastnameChange}
         />
-      </div>
+      </div> */}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
@@ -112,6 +134,18 @@ const RegisterPage = () => {
           The password and confirm password must be the same
         </div>
       )}
+      <div className="mb-3 form-check">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="exampleCheck1"
+          onChange={handleCBChanged}
+          checked={isBiz}
+        />
+        <label className="form-check-label" htmlFor="exampleCheck1">
+          Check me out
+        </label>
+      </div>
       <button type="submit" className="btn btn-primary">
         Submit
       </button>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,19 @@ const LoginPage = () => {
   };
   const handleSubmit = (ev) => {
     ev.preventDefault();
+    if (email && password) {
+      axios
+        .post("http://localhost:3001/api/auth", {
+          email,
+          password,
+        })
+        .then(({ data }) => {
+          console.log("data", data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -48,7 +62,7 @@ const LoginPage = () => {
         />
         <div className="position-relative">
           {password.length < 6 && (
-            <div id="emailHelp" className="form-text position-absolute">
+            <div id="emailHelp" className="form-text">
               Please provide password with at least 6 characters
             </div>
           )}
