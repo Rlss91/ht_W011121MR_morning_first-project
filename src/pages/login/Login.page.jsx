@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
 
@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  useEffect(() => {
+    console.log(email);
+  }, [email]);
   const handleEmailChange = (ev) => {
     setEmail(ev.target.value);
   };

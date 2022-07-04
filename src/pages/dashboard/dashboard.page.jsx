@@ -1,8 +1,12 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 
 const DashboardPage = () => {
   const [cardsArr, setCardsArr] = useState([]);
+  useEffect(() => {
+    handleLoadCardsClick();
+    console.log("use effect");
+  }, []);
   const handleLoadCardsClick = () => {
     axios
       .get("/cards")
