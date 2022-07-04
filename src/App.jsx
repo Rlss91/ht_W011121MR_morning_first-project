@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
 import CreateBizCardPage from "./pages/createBizCard/CreateBizCard.page";
+import DashboardPage from "./pages/dashboard/dashboard.page";
 // import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage";
 // import TestComponent from "./components/Test.component";
 // import LoginPage from "./pages/login/Login.page";
@@ -23,7 +24,8 @@ function App() {
       {/* <UsersPage /> */}
       {/* <DefenetlyRealAmazonPage /> */}
       {/* <FirstAjaxPage /> */}
-      <CreateBizCardPage />
+      {/* <CreateBizCardPage /> */}
+      <DashboardPage />
     </div>
   );
 }
