@@ -2,11 +2,12 @@ import { ToastContainer } from "react-toastify";
 
 import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
-import CreateBizCardPage from "./pages/createBizCard/CreateBizCard.page";
+// import CreateBizCardPage from "./pages/createBizCard/CreateBizCard.page";
 import DashboardPage from "./pages/dashboard/dashboard.page";
+import TkUseEffectsPage from "./pages/tkUseEffects/tkUseEffects.page";
 // import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage";
 // import TestComponent from "./components/Test.component";
-import LoginPage from "./pages/login/Login.page";
+// import LoginPage from "./pages/login/Login.page";
 // import RegisterPage from "./pages/register/Register.page";
 // import ProductsPage from "./pages/products/Products.page";
 // import UsersPage from "./pages/users/Users.page";
@@ -18,7 +19,7 @@ function App() {
       <Navbar />
       <ToastContainer />
       {/* <TestComponent /> */}
-      <LoginPage />
+      {/* <LoginPage /> */}
       {/* <RegisterPage /> */}
       {/* <ProductsPage /> */}
       {/* <UsersPage /> */}
@@ -26,6 +27,7 @@ function App() {
       {/* <FirstAjaxPage /> */}
       {/* <CreateBizCardPage /> */}
       {/* <DashboardPage /> */}
+      <TkUseEffectsPage />
     </div>
   );
 }
