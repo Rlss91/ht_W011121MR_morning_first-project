@@ -6,10 +6,12 @@ import { toast } from "react-toastify";
 
 const DashboardPage = () => {
   const [cardsArr, setCardsArr] = useState([]);
+
   useEffect(() => {
     getAllCards();
     console.log("use effect");
   }, []);
+
   const handleDeleteCard = (id) => {
     // delete from server (database)
     // delete from cardsArr (state)
