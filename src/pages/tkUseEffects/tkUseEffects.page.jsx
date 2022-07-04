@@ -13,7 +13,9 @@ const TkUseEffectsPage = () => {
   return (
     <Fragment>
       <input type="text" value={txt} onChange={handleTxtChange} />
-      <button disabled={!showBtn}>click</button>
+      <button className={`btn btn-primary ${showBtn ? "" : "d-none"}`}>
+        click
+      </button>
     </Fragment>
   );
 };
