@@ -3,20 +3,22 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
-const EditBizCardPopupComponent = ({
-  bizName,
-  bizDescription,
-  bizAddress,
-  bizPhone,
-  bizImage,
-  onEditDone,
-  onCancelEdit,
-}) => {
-  const [bizName, setBizName] = useState(bizName);
-  const [bizDescription, setBizDescription] = useState(bizDescription);
-  const [bizAddress, setBizAddress] = useState(bizAddress);
-  const [bizPhone, setBizPhone] = useState(bizPhone);
-  const [bizImage, setBizImage] = useState(bizImage);
+// {
+//     bizName,
+//     bizDescription,
+//     bizAddress,
+//     bizPhone,
+//     bizImage,
+//     onEditDone,
+//     onCancelEdit,
+//   }
+
+const EditBizCardPopupComponent = (props) => {
+  const [bizName, setBizName] = useState(props.bizName);
+  const [bizDescription, setBizDescription] = useState(props.bizDescription);
+  const [bizAddress, setBizAddress] = useState(props.bizAddress);
+  const [bizPhone, setBizPhone] = useState(props.bizPhone);
+  const [bizImage, setBizImage] = useState(props.bizImage);
 
   const handleBizNameChange = (ev) => {
     setBizName(ev.target.value);
@@ -49,11 +51,11 @@ const EditBizCardPopupComponent = ({
     if (bizImage) {
       dataToSend.bizImage = bizImage;
     }
-    onEditDone(dataToSend);
+    props.onEditDone(dataToSend);
   };
 
   const handleCancelClick = () => {
-    onCancelEdit();
+    props.onCancelEdit();
   };
 
   return (
