@@ -8,7 +8,8 @@ import EditBizCardPopupComponent from "../../components/editBizCardPopup/editBiz
 
 const DashboardPage = () => {
   const [cardsArr, setCardsArr] = useState([]);
-  const [showEditPopup, setShowEditPopup] = useState(false);
+  const [dataToEdit, setDataToEdit] = useState(null);
+  // const [showEditPopup, setShowEditPopup] = useState(false);
 
   useEffect(() => {
     getAllCards();
@@ -39,8 +40,15 @@ const DashboardPage = () => {
       });
   };
 
-  const handleShowPopup = () => {
-    setShowEditPopup(true);
+  const handleShowPopup = (id) => {
+    // setShowEditPopup(true);
+    let ktemp = cloneDeep(cardsArr.find((item) => item._id === id));
+    setDataToEdit(ktemp);
+  };
+
+  const handleCancelEdit = () => {
+    // setShowEditPopup(false);
+    setDataToEdit(null);
   };
 
   const getAllCards = () => {
@@ -114,7 +122,12 @@ const DashboardPage = () => {
   return (
     <Fragment>
       {renderRowsFromArr(cardsArr)}
-      {showEditPopup && <EditBizCardPopupComponent />}
+      {dataToEdit && (
+        <EditBizCardPopupComponent
+          onCancelEdit={handleCancelEdit}
+          {...dataToEdit}
+        />
+      )}
     </Fragment>
   );
 };

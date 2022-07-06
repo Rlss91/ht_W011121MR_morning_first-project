@@ -41,6 +41,21 @@ const EditBizCardPopupComponent = (props) => {
     ev.preventDefault();
   };
 
+  const handleFormClick = (ev) => {
+    /*
+    because we use onclick of the div (parent)
+    when we click on elms inside this div
+    js activates the onclick of the div (parent)
+    as well, this cause a bug because each time
+    we will press on anything inside the form
+    it will hide the popup.
+    to stop this we must use onclick of the from
+    and use ev.stopPropagation(); command to tell
+    js don't use onclick of the div (parent)
+    */
+    ev.stopPropagation();
+  };
+
   const handleConfirmClick = () => {
     //! joi validation
     let dataToSend = {
@@ -61,7 +76,11 @@ const EditBizCardPopupComponent = (props) => {
 
   return (
     <div className="center-wrapper" onClick={handleCancelClick}>
-      <form onSubmit={handleSubmit} className="center-absolut">
+      <form
+        onSubmit={handleSubmit}
+        className="center-absolut"
+        onClick={handleFormClick}
+      >
         <div className="mb-3">
           <h3>Edit card</h3>
         </div>
