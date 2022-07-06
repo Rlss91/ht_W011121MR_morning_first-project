@@ -6,9 +6,13 @@ const BizCardComponent = ({
   bizAddress,
   _id,
   onDelete,
+  onEdit,
 }) => {
   const handleDeleteBtnClick = () => {
     onDelete(_id);
+  };
+  const handleEditBtnClick = () => {
+    onEdit(_id);
   };
   return (
     <div className="card">
@@ -21,7 +25,12 @@ const BizCardComponent = ({
           <li className="list-group-item">{bizAddress}</li>
         </ul>
         <div className="card-body">
-          <button className="card-link btn btn-warning">Edit</button>
+          <button
+            className="card-link btn btn-warning"
+            onClick={handleEditBtnClick}
+          >
+            Edit
+          </button>
           <button
             className="card-link btn btn-danger"
             onClick={handleDeleteBtnClick}

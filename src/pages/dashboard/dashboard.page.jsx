@@ -8,6 +8,7 @@ import EditBizCardPopupComponent from "../../components/editBizCardPopup/editBiz
 
 const DashboardPage = () => {
   const [cardsArr, setCardsArr] = useState([]);
+  const [showEditPopup, setShowEditPopup] = useState(false);
 
   useEffect(() => {
     getAllCards();
@@ -36,6 +37,10 @@ const DashboardPage = () => {
           progress: undefined,
         });
       });
+  };
+
+  const handleShowPopup = () => {
+    setShowEditPopup(true);
   };
 
   const getAllCards = () => {
@@ -87,7 +92,11 @@ const DashboardPage = () => {
       inArr = [
         ...inArr,
         <div key={arrOfItems[i]._id} className="col">
-          <BizCardComponent {...arrOfItems[i]} onDelete={handleDeleteCard} />
+          <BizCardComponent
+            {...arrOfItems[i]}
+            onDelete={handleDeleteCard}
+            onEdit={handleShowPopup}
+          />
         </div>,
       ];
     }
@@ -105,7 +114,7 @@ const DashboardPage = () => {
   return (
     <Fragment>
       {renderRowsFromArr(cardsArr)}
-      <EditBizCardPopupComponent />
+      {showEditPopup && <EditBizCardPopupComponent />}
     </Fragment>
   );
 };
