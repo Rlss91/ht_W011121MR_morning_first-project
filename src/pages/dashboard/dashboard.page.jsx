@@ -1,8 +1,10 @@
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import BizCardComponent from "../../components/bizCard/bizCard.component";
 import { cloneDeep } from "lodash";
 import { toast } from "react-toastify";
+
+import BizCardComponent from "../../components/bizCard/bizCard.component";
+import EditBizCardPopupComponent from "../../components/editBizCardPopup/editBizCardPopup.component";
 
 const DashboardPage = () => {
   const [cardsArr, setCardsArr] = useState([]);
@@ -100,7 +102,12 @@ const DashboardPage = () => {
     return newArr;
   };
 
-  return <Fragment>{renderRowsFromArr(cardsArr)}</Fragment>;
+  return (
+    <Fragment>
+      {renderRowsFromArr(cardsArr)}
+      <EditBizCardPopupComponent />
+    </Fragment>
+  );
 };
 
 export default DashboardPage;

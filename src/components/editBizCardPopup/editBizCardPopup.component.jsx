@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import "./editBizCardPopup.component.css";
 
 // {
 //     bizName,
@@ -59,82 +60,93 @@ const EditBizCardPopupComponent = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="bizNameInput" className="form-label">
-          Biz Name:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="bizNameInput"
-          value={bizName}
-          onChange={handleBizNameChange}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="bizDescriptionInput" className="form-label">
-          Biz Description:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="bizDescriptionInput"
-          value={bizDescription}
-          onChange={handleBizDescriptionChange}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="bizAddressInput" className="form-label">
-          Biz Address:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="bizAddressInput"
-          value={bizAddress}
-          onChange={handleBizAddressChange}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="bizPhoneInput" className="form-label">
-          Biz Phone:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="bizPhoneInput"
-          value={bizPhone}
-          onChange={handleBizPhoneChange}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="bizImageInput" className="form-label">
-          Biz Image (url):
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="bizImageInput"
-          value={bizImage}
-          onChange={handleBizImageChange}
-        />
-      </div>
-      <button
-        type="submit"
-        className="btn btn-primary"
-        onClick={handleConfirmClick}
-      >
-        <FontAwesomeIcon icon={faCircleCheck} />
-      </button>
-      <button
-        type="submit"
-        className="btn btn-danger"
-        onClick={handleCancelClick}
-      >
-        <FontAwesomeIcon icon={faBan} />
-      </button>
-    </form>
+    <div className="center-wrapper" onClick={handleCancelClick}>
+      <form onSubmit={handleSubmit} className="center-absolut">
+        <div className="mb-3">
+          <h3>Edit card</h3>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="bizNameInput" className="form-label">
+            Biz Name:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="bizNameInput"
+            value={bizName}
+            onChange={handleBizNameChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="bizDescriptionInput" className="form-label">
+            Biz Description:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="bizDescriptionInput"
+            value={bizDescription}
+            onChange={handleBizDescriptionChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="bizAddressInput" className="form-label">
+            Biz Address:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="bizAddressInput"
+            value={bizAddress}
+            onChange={handleBizAddressChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="bizPhoneInput" className="form-label">
+            Biz Phone:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="bizPhoneInput"
+            value={bizPhone}
+            onChange={handleBizPhoneChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="bizImageInput" className="form-label">
+            Biz Image (url):
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="bizImageInput"
+            value={bizImage}
+            onChange={handleBizImageChange}
+          />
+        </div>
+        <div className="row">
+          <div className="col">
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={handleConfirmClick}
+            >
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="submit"
+              className="btn btn-danger w-100"
+              onClick={handleCancelClick}
+            >
+              <FontAwesomeIcon icon={faBan} />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
