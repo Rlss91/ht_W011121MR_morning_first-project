@@ -67,7 +67,7 @@ const EditBizCardPopupComponent = (props) => {
     if (bizImage) {
       dataToSend.bizImage = bizImage;
     }
-    props.onEditDone(dataToSend);
+    props.onEditDone(props._id, dataToSend);
   };
 
   const handleCancelClick = () => {

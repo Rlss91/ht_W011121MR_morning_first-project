@@ -13,7 +13,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     getAllCards();
-    console.log("use effect");
+    // console.log("use effect");
   }, []);
 
   const handleDeleteCard = (id) => {
@@ -27,7 +27,7 @@ const DashboardPage = () => {
         setCardsArr(newCardsArr);
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
         toast.error("cannot delete the selected card", {
           position: "top-right",
           autoClose: 5000,
@@ -51,6 +51,24 @@ const DashboardPage = () => {
     setDataToEdit(null);
   };
 
+  const handleEditCard = (_id, updatedCard) => {
+    // console.log("updatedCard", updatedCard);
+    axios
+      .put("/cards/" + _id, updatedCard)
+      .then((res) => {
+        let newArrOfCard = cloneDeep(cardsArr);
+        let cardItemInd = newArrOfCard.findIndex((item) => item._id === _id);
+        if (cardItemInd !== -1) {
+          newArrOfCard[cardItemInd] = { ...cloneDeep(updatedCard), _id };
+          setCardsArr(newArrOfCard);
+        }
+        setDataToEdit(null);
+      })
+      .catch((err) => {
+        toast("error");
+      });
+  };
+
   const getAllCards = () => {
     /*
         getAllCards will send ajax get request to the server
@@ -61,11 +79,11 @@ const DashboardPage = () => {
     axios
       .get("/cards")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setCardsArr(res.data);
       })
       .catch((err) => {
-        console.log("axios error", err);
+        // console.log("axios error", err);
         toast.error("cannot get cards", {
           position: "top-right",
           autoClose: 5000,
@@ -101,6 +119,7 @@ const DashboardPage = () => {
         ...inArr,
         <div key={arrOfItems[i]._id} className="col">
           <BizCardComponent
+            key={arrOfItems[i]._id + "_child"}
             {...arrOfItems[i]}
             onDelete={handleDeleteCard}
             onEdit={handleShowPopup}
@@ -125,6 +144,7 @@ const DashboardPage = () => {
       {dataToEdit && (
         <EditBizCardPopupComponent
           onCancelEdit={handleCancelEdit}
+          onEditDone={handleEditCard}
           {...dataToEdit}
         />
       )}
