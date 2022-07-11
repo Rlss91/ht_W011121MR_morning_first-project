@@ -22,6 +22,9 @@ const counterSlice = createSlice({
     counter(state) {
       state.counter++;
     },
+    addNumber(state, action) {
+      state.counter += +action.payload;
+    },
   },
 });
 
