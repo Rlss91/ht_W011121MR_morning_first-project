@@ -10,6 +10,9 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 /* toastify */
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
+/* redux */
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 /* axios config */
 //add this url before every axios request
@@ -29,7 +32,9 @@ axios.interceptors.request.use((config) => {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

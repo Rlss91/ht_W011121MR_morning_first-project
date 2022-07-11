@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import Joi from "joi-browser";
+import { toast } from "react-toastify";
+import jwt_decode from "jwt-decode";
 
 import loginSchema from "../../validation/login.validation";
-import { toast } from "react-toastify";
+import { authActions } from "../../store/auth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log(email);
   }, [email]);
@@ -44,6 +50,9 @@ const LoginPage = () => {
         .then(({ data }) => {
           console.log("data", data);
           localStorage.setItem("token", data.token);
+          dispatch(authActions.login()); //update redux state
+          console.log("token decoded", jwt_decode(data.token));
+          dispatch(authActions.updateUserData(jwt_decode(data.token)));
         })
         .catch((err) => {
           console.log(err);

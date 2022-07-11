@@ -1,6 +1,14 @@
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
+  const userData = useSelector((state) => state.auth.userData);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      className={`navbar navbar-expand-lg navbar-light  ${
+        loggedIn ? "bg-success" : "bg-danger"
+      }`}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Navbar
@@ -61,7 +69,9 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
+              <a className="nav-link">
+                {userData.email ? userData.email : "please login"}
+              </a>
             </li>
           </ul>
           <form className="d-flex">

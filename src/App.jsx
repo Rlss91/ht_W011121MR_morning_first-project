@@ -7,7 +7,7 @@ import DashboardPage from "./pages/dashboard/dashboard.page";
 // import TkUseEffectsPage from "./pages/tkUseEffects/tkUseEffects.page";
 // import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage";
 // import TestComponent from "./components/Test.component";
-// import LoginPage from "./pages/login/Login.page";
+import LoginPage from "./pages/login/Login.page";
 // import RegisterPage from "./pages/register/Register.page";
 // import ProductsPage from "./pages/products/Products.page";
 // import UsersPage from "./pages/users/Users.page";
@@ -19,14 +19,14 @@ function App() {
       <Navbar />
       <ToastContainer />
       {/* <TestComponent /> */}
-      {/* <LoginPage /> */}
+      <LoginPage />
       {/* <RegisterPage /> */}
       {/* <ProductsPage /> */}
       {/* <UsersPage /> */}
       {/* <DefenetlyRealAmazonPage /> */}
       {/* <FirstAjaxPage /> */}
       {/* <CreateBizCardPage /> */}
-      <DashboardPage />
+      {/* <DashboardPage /> */}
       {/* <TkUseEffectsPage /> */}
     </div>
   );
