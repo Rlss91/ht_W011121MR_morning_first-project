@@ -4,6 +4,7 @@ import axios from "axios";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
 
 import loginSchema from "../../validation/login.validation";
 import { authActions } from "../../store/auth";
@@ -13,6 +14,8 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   useEffect(() => {
     console.log(email);
@@ -52,7 +55,8 @@ const LoginPage = () => {
           localStorage.setItem("token", data.token);
           dispatch(authActions.login()); //update redux state
           console.log("token decoded", jwt_decode(data.token));
-          dispatch(authActions.updateUserData(jwt_decode(data.token)));
+          dispatch(authActions.updateUserData(jwt_decode(data.token))); //update user info in redux store
+          history.push("/dashboard"); //navigate to another page
         })
         .catch((err) => {
           console.log(err);
