@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { Route, Switch } from "react-router-dom";
+import axios from "axios";
 
 import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
@@ -17,11 +19,25 @@ import NotFoundPage from "./pages/nofoundpage/notfound.page";
 import LogoutPage from "./pages/logout/logout.page";
 import QueryParamsPage from "./pages/QueryParams/queryParams.page";
 import AuthGuardRoute from "./components/AuthGuardRoute";
+import useAfterLogin from "./hooks/useAfterLogin";
 // import ProductsPage from "./pages/products/Products.page";
 // import UsersPage from "./pages/users/Users.page";
 // import DefenetlyRealAmazonPage from "./pages/defenetlyRealAmazon/defenetlyRealAmazon.page";
 
 function App() {
+  const afterLogin = useAfterLogin();
+
+  useEffect(() => {
+    axios
+      .post("/auth/loginbytoken")
+      .then((res) => {
+        console.log("res", res);
+        const token = localStorage.getItem("token");
+        afterLogin(token);
+      })
+      .catch((err) => {});
+  }, []);
+
   return (
     <div className="container">
       <Navbar />

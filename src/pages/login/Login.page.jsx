@@ -8,6 +8,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import loginSchema from "../../validation/login.validation";
 import { authActions } from "../../store/auth";
+import useAfterLogin from "../../hooks/useAfterLogin";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,8 @@ const LoginPage = () => {
 
   const history = useHistory();
   const location = useLocation();
+
+  const afterLogin = useAfterLogin();
 
   useEffect(() => {
     console.log("location", location);
@@ -74,10 +77,12 @@ const LoginPage = () => {
         })
         .then(({ data }) => {
           console.log("data", data);
-          localStorage.setItem("token", data.token);
-          dispatch(authActions.login()); //update redux state
-          console.log("token decoded", jwt_decode(data.token));
-          dispatch(authActions.updateUserData(jwt_decode(data.token))); //update user info in redux store
+          // localStorage.setItem("token", data.token);
+          // dispatch(authActions.login()); //update redux state
+          // console.log("token decoded", jwt_decode(data.token));
+          // dispatch(authActions.updateUserData(jwt_decode(data.token))); //update user info in redux store
+          afterLogin(data.token);
+          // useAfterLogin(data.token);
           history.push("/dashboard"); //navigate to another page
         })
         .catch((err) => {
