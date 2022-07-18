@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
-// import CreateBizCardPage from "./pages/createBizCard/CreateBizCard.page";
+import CreateBizCardPage from "./pages/createBizCard/CreateBizCard.page";
 import DashboardPage from "./pages/dashboard/dashboard.page";
 // import TkUseEffectsPage from "./pages/tkUseEffects/tkUseEffects.page";
 // import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage";
@@ -39,6 +39,10 @@ function App() {
         <AuthGuardRoute
           path="/dashboard"
           component={DashboardPage}
+        ></AuthGuardRoute>
+        <AuthGuardRoute
+          path="/createbizcard"
+          component={CreateBizCardPage}
         ></AuthGuardRoute>
         <Route path="/logout">
           <LogoutPage />

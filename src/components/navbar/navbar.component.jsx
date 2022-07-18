@@ -13,6 +13,16 @@ const Navbar = () => {
       return (
         <Fragment>
           <li className="nav-item">
+            <NavLink className="nav-link" to="/dashboard">
+              dashboard
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/createbizcard">
+              create biz card
+            </NavLink>
+          </li>
+          <li className="nav-item">
             <NavLink className="nav-link" to="/">
               {userData.email}
             </NavLink>
@@ -79,24 +89,20 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/dashboard">
-                dashboard
-              </NavLink>
-            </li>
+
             {showLogin()}
-            <form className="d-flex" onSubmit={handleSearchSubmit}>
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={searchInput}
-                onChange={searchInputChange}
-              />
-              <button className="btn btn-warning">Search</button>
-            </form>
           </ul>
+          <form className="d-flex" onSubmit={handleSearchSubmit}>
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={searchInput}
+              onChange={searchInputChange}
+            />
+            <button className="btn btn-warning">Search</button>
+          </form>
         </div>
       </div>
     </nav>
