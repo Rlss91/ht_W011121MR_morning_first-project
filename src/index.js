@@ -19,7 +19,8 @@ import { BrowserRouter } from "react-router-dom";
 /* axios config */
 //add this url before every axios request
 //if the url is relative - then axios will ignore this url
-axios.defaults.baseURL = "http://localhost:3001/api";
+// axios.defaults.baseURL = "http://localhost:3001/api";
+axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
 
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
