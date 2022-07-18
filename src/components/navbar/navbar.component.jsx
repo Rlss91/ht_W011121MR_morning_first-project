@@ -1,11 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const userData = useSelector((state) => state.auth.userData);
-
+  const history = useHistory();
+  const [searchInput, setSearchInput] = useState("");
   const showLogin = () => {
     if (userData.email) {
       return (
@@ -38,6 +40,15 @@ const Navbar = () => {
         </Fragment>
       );
     }
+  };
+
+  const searchInputChange = (ev) => {
+    setSearchInput(ev.target.value);
+  };
+
+  const handleSearchSubmit = (ev) => {
+    ev.preventDefault();
+    history.push("/qparams?q=" + searchInput);
   };
 
   return (
@@ -74,6 +85,17 @@ const Navbar = () => {
               </NavLink>
             </li>
             {showLogin()}
+            <form className="d-flex" onSubmit={handleSearchSubmit}>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={searchInput}
+                onChange={searchInputChange}
+              />
+              <button className="btn btn-warning">Search</button>
+            </form>
           </ul>
         </div>
       </div>
