@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/auth";
 import { useHistory } from "react-router-dom";
@@ -12,6 +12,6 @@ const LogoutPage = () => {
     history.push("/");
   }, []);
 
-  return <div></div>;
+  return <Fragment></Fragment>;
 };
 export default LogoutPage;
