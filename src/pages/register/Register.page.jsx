@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 import registerSchema from "../../validation/register.validation";
 
@@ -13,6 +14,7 @@ const RegisterPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isBiz, setIsBiz] = useState(false);
   const [showPasswordErrorMsg, setShowPasswordErrorMsg] = useState(false);
+  const history = useHistory();
 
   const handleNameChange = (ev) => {
     setName(ev.target.value);
@@ -62,6 +64,7 @@ const RegisterPage = () => {
           })
           .then((res) => {
             console.log(res.data);
+            history.push("/login");
           })
           .catch((err) => {
             console.log("err from axios", err);

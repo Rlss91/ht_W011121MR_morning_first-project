@@ -14,6 +14,7 @@ import LoginPage from "./pages/login/Login.page";
 import RegisterPage from "./pages/register/Register.page";
 import HomePage from "./pages/homepage/home.page";
 import NotFoundPage from "./pages/nofoundpage/notfound.page";
+import LogoutPage from "./pages/logout/logout.page";
 // import ProductsPage from "./pages/products/Products.page";
 // import UsersPage from "./pages/users/Users.page";
 // import DefenetlyRealAmazonPage from "./pages/defenetlyRealAmazon/defenetlyRealAmazon.page";
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route path="/dashboard">
           <DashboardPage />
+        </Route>
+        <Route path="/logout">
+          <LogoutPage />
         </Route>
         <Route path="*">
           <NotFoundPage />
