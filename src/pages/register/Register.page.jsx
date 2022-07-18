@@ -64,7 +64,7 @@ const RegisterPage = () => {
           })
           .then((res) => {
             console.log(res.data);
-            history.push("/login");
+            history.push("/login", { email: email, password: password });
           })
           .catch((err) => {
             console.log("err from axios", err);

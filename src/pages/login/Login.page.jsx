@@ -4,7 +4,7 @@ import axios from "axios";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import loginSchema from "../../validation/login.validation";
 import { authActions } from "../../store/auth";
@@ -16,10 +16,32 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log("location", location);
+    if (location.state && location.state.email && location.state.password) {
+      setEmail(location.state.email);
+      setPassword(location.state.password);
+    }
+  }, []);
 
   useEffect(() => {
     console.log(email);
   }, [email]);
+
+  useEffect(() => {
+    if (
+      email != "" &&
+      password != "" &&
+      location.state &&
+      location.state.email &&
+      location.state.password
+    ) {
+      handleSubmit();
+    }
+  }, [email, password]);
+
   const handleEmailChange = (ev) => {
     setEmail(ev.target.value);
   };
@@ -27,7 +49,7 @@ const LoginPage = () => {
     setPassword(ev.target.value);
   };
   const handleSubmit = (ev) => {
-    ev.preventDefault();
+    if (ev) ev.preventDefault();
     const validatedValue = Joi.validate({ email, password }, loginSchema, {
       abortEarly: false,
     });
