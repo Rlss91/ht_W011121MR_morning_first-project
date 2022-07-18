@@ -80,6 +80,7 @@ const DashboardPage = () => {
       .get("/cards")
       .then((res) => {
         // console.log(res.data);
+        if (res.data.length === 0) toast("you have no cards");
         setCardsArr(res.data);
       })
       .catch((err) => {

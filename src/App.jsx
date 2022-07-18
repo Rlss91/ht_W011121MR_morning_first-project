@@ -16,6 +16,7 @@ import HomePage from "./pages/homepage/home.page";
 import NotFoundPage from "./pages/nofoundpage/notfound.page";
 import LogoutPage from "./pages/logout/logout.page";
 import QueryParamsPage from "./pages/QueryParams/queryParams.page";
+import AuthGuardRoute from "./components/AuthGuardRoute";
 // import ProductsPage from "./pages/products/Products.page";
 // import UsersPage from "./pages/users/Users.page";
 // import DefenetlyRealAmazonPage from "./pages/defenetlyRealAmazon/defenetlyRealAmazon.page";
@@ -35,9 +36,10 @@ function App() {
         <Route path="/register">
           <RegisterPage />
         </Route>
-        <Route path="/dashboard">
-          <DashboardPage />
-        </Route>
+        <AuthGuardRoute
+          path="/dashboard"
+          component={DashboardPage}
+        ></AuthGuardRoute>
         <Route path="/logout">
           <LogoutPage />
         </Route>
