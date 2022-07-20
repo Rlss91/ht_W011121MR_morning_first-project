@@ -20,6 +20,8 @@ import LogoutPage from "./pages/logout/logout.page";
 import QueryParamsPage from "./pages/QueryParams/queryParams.page";
 import AuthGuardRoute from "./components/AuthGuardRoute";
 import useAfterLogin from "./hooks/useAfterLogin";
+import AmazonItemsContainerComponent from "./components/amazonItemsContainer/amazonItemsContainer.component";
+import ContactUsPage from "./pages/contactUs/contactus.page";
 // import ProductsPage from "./pages/products/Products.page";
 // import UsersPage from "./pages/users/Users.page";
 // import DefenetlyRealAmazonPage from "./pages/defenetlyRealAmazon/defenetlyRealAmazon.page";
@@ -65,6 +67,12 @@ function App() {
         </Route>
         <Route path="/qparams">
           <QueryParamsPage />
+        </Route>
+        <Route path="/aic">
+          <AmazonItemsContainerComponent />
+        </Route>
+        <Route path="/contactus">
+          <ContactUsPage />
         </Route>
         <Route path="*">
           <NotFoundPage />
