@@ -63,7 +63,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg navbar-light  ${
+      className={`navbar navbar-expand-lg navbar-light mb-3  ${
         loggedIn ? "bg-success" : "bg-danger"
       }`}
     >
