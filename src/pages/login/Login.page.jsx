@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import axios from "axios";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 import { useHistory, useLocation } from "react-router-dom";
 
 import loginSchema from "../../validation/login.validation";
-import { authActions } from "../../store/auth";
+// import { authActions } from "../../store/auth";
 import useAfterLogin from "../../hooks/useAfterLogin";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const history = useHistory();
   const location = useLocation();

@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 
-import "./App.css";
+import "./App.scss";
 import Navbar from "./components/navbar/navbar.component";
 import CreateBizCardPage from "./pages/createBizCard/CreateBizCard.page";
 import DashboardPage from "./pages/dashboard/dashboard.page";

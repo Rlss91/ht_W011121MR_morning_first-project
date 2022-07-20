@@ -9,7 +9,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 /* toastify */
 import "react-toastify/dist/ReactToastify.css";
-import "./index.css";
+import "./index.scss";
 /* redux */
 import { Provider } from "react-redux";
 import store from "./store/index";
